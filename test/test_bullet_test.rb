@@ -1,9 +1,15 @@
 require_relative "test_helper"
 require "bullet"
+require "logger"
 
 class BulletTest < Minitest::Test
   def setup
-    Bullet.start_request
+    # Configure Bullet to be active and raise on N+1 query detection
+    Bullet.enable = true
+    Bullet.raise = true
+
+    # Enable ActiveRecord logging to STDOUT (for debugging purposes)
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
 
     # Clear any existing records
     Workshop.delete_all
@@ -12,6 +18,9 @@ class BulletTest < Minitest::Test
 
     # Create a Car for the association
     @car1 = Car.create!(name: "Test Car")
+
+    # Start Bullet request tracking
+    Bullet.start_request
   end
 
   def teardown
