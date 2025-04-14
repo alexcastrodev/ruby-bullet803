@@ -4,6 +4,8 @@ This is a test project designed to simulate an issue encountered during the upgr
 
 The primary goal of this project is to test and reproduce the conditions where Bullet might behave unexpectedly after the upgrade, specifically in scenarios involving nested attributes and inverse associations.
 
+[Issue link](https://github.com/flyerhzm/bullet/issues/740)
+
 # 8.0.3 Output
 
 ```bash
