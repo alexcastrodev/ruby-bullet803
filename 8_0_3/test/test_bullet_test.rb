@@ -8,7 +8,6 @@ class BulletTest < Minitest::Test
     User.delete_all
     Customer.delete_all
     CustomerAddress.delete_all
-    UserAddress.delete_all
 
     # Configure Bullet to detect and raise on N+1 queries
     Bullet.raise = true
