@@ -11,20 +11,22 @@ ActiveRecord::Base.establish_connection(
 
 # Define the database schema
 ActiveRecord::Schema.define do
-  create_table :workshops, force: true do |t|
+  create_table :users, force: true do |t|
     t.string :name
   end
 
-  create_table :cars, force: true do |t|
+  create_table :customers, force: true do |t|
     t.string :name
+    t.references :user, foreign_key: true
+    t.references :customer_address, foreign_key: true
   end
 
-  create_table :inventory_items, force: true do |t|
-    t.integer :quantity, default: 0, null: false
-    t.integer :workshop_id
-    t.integer :car_id
+  create_table :customer_addresses, force: true do |t|
+    t.string :city
+    t.boolean :main, default: false
+    t.references :customer, foreign_key: true
+    t.references :user, foreign_key: true
   end
 end
 
-# Load models from app/models using __dir__
 Dir[File.join(__dir__, "../app/models/*.rb")].sort.each { |file| require file }
