@@ -24,6 +24,7 @@ class BulletTest < Minitest::Test
     ])
 
     # Start Bullet request tracking
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
     Bullet.start_request
   end
 

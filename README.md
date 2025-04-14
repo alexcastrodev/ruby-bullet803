@@ -90,3 +90,14 @@ Finished in 0.035460s, 28.2008 runs/s, 0.0000 assertions/s.
 
 1 runs, 0 assertions, 0 failures, 0 errors, 0 skips
 ```
+
+
+# AR Output
+
+```bash
+D, [2025-04-14T15:28:06.678376 #920] DEBUG -- :   TRANSACTION (0.0ms)  begin transaction
+D, [2025-04-14T15:28:06.678591 #920] DEBUG -- :   Customer Create (0.3ms)  INSERT INTO "customers" ("name", "user_id") VALUES (?, ?) RETURNING "id"  [["name", "Test Customer"], ["user_id", 1]]
+D, [2025-04-14T15:28:06.679183 #920] DEBUG -- :   CustomerAddress Create (0.1ms)  INSERT INTO "customer_addresses" ("city", "main", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"  [["city", "City 1"], ["main", 1], ["customer_id", 2], ["created_at", "2025-04-14 15:28:06.678908"], ["updated_at", "2025-04-14 15:28:06.678908"]]
+D, [2025-04-14T15:28:06.680683 #920] DEBUG -- :   CustomerAddress Create (0.1ms)  INSERT INTO "customer_addresses" ("city", "main", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"  [["city", "City 2"], ["main", 1], ["customer_id", 2], ["created_at", "2025-04-14 15:28:06.680331"], ["updated_at", "2025-04-14 15:28:06.680331"]]
+D, [2025-04-14T15:28:06.680831 #920] DEBUG -- :   TRANSACTION (0.0ms)  commit transaction
+```
