@@ -4,23 +4,26 @@ require "logger"
 
 class BulletTest < Minitest::Test
   def setup
-    # Enable ActiveRecord logging to STDOUT for debugging purposes
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
-
     # Clear any existing records
     User.delete_all
     Customer.delete_all
     CustomerAddress.delete_all
-
-    # Create user
-    @user = User.create!(name: "Test User")
+    UserAddress.delete_all
 
     # Configure Bullet to detect and raise on N+1 queries
-    Bullet.enable = true
     Bullet.raise = true
-    Bullet.bullet_logger = true
-    Bullet.rails_logger = true
+    Bullet.enable = true
+    Bullet.unused_eager_loading_enable = false
     
+    # Create user
+    @user = User.create!(name: "Test User")
+    
+    # Seed
+    @user.customers.create!(name: "Test Customer", addresses: [
+      CustomerAddress.create!(city: "Test City", main: true), 
+      CustomerAddress.create!(city: "Test City", main: false)
+    ])
+
     # Start Bullet request tracking
     Bullet.start_request
   end
@@ -31,9 +34,6 @@ class BulletTest < Minitest::Test
   end
 
   def test_creating_multiple_main_addresses
-    # Create a customer with multiple main addresses
-    # This should trigger Bullet to detect an N+1 query
-    # and raise an error if Bullet.raise is set to true
     create_params = {
       name: "Test Customer",
       addresses_attributes: [

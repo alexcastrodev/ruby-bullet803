@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (8.0.2)
-      activesupport (= 8.0.2)
-    activerecord (8.0.2)
-      activemodel (= 8.0.2)
-      activesupport (= 8.0.2)
+    activemodel (7.2.2.1)
+      activesupport (= 7.2.2.1)
+    activerecord (7.2.2.1)
+      activemodel (= 7.2.2.1)
+      activesupport (= 7.2.2.1)
       timeout (>= 0.4.0)
-    activesupport (8.0.2)
+    activesupport (7.2.2.1)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -19,11 +19,10 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-      uri (>= 0.13.1)
     base64 (0.2.0)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
-    bullet (8.0.3)
+    bullet (8.0.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     coderay (1.1.3)
@@ -54,7 +53,6 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uniform_notifier (1.16.0)
-    uri (1.0.3)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -69,8 +67,8 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  activerecord
-  bullet
+  activerecord (= 7.2.2.1)
+  bullet (= 8.0.1)
   minitest
   pry
   rake
