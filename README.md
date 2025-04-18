@@ -6,6 +6,17 @@ The primary goal of this project is to test and reproduce the conditions where B
 
 [Issue link](https://github.com/flyerhzm/bullet/issues/740)
 
+# Solution
+
+The 8.0.4 fix this issue.
+
+RSpec output 
+
+```bash
+Finished in 33 minutes 54 seconds (files took 8.45 seconds to load)
+1180 examples, 0 failures
+```
+
 # 8.0.3 Output
 
 ```bash
